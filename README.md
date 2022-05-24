@@ -2,48 +2,44 @@
 
 ## Executive Summary
 
-### Introduction (opener)
+### Introduction 
+Chewie is a ten-pound rescue pup who loves everyone and plans to be a therapy dog once the AKC Canine Good Citizen test is passed. 
 
 
-### Overview and Goals
+### Problem and Goals
 
-For project 3, your goal is two-fold:
-1. Using [Pushshift's](https://github.com/pushshift/api) API, you'll collect posts from two subreddits of your choosing.
-    - [PRAW](https://praw.readthedocs.io/en/stable/) is an alternative
-        - `conda install -c conda-forge praw`
-        - [Setup and short demo video](https://www.youtube.com/watch?v=NRgfgtzIhBQ)
-2. You'll then use NLP to train a classifier on which subreddit a given post came from. This is a binary classification problem.
+__Goal:__ Build a classification model that can be used to identify Service Dogs vs Dog Training <br>
 
+Service dogs require a lot of training. 
 
-#### About the API
-
-Pushshift's API is fairly straightforward. For example, if I want the posts from [`/r/boardgames`](https://www.reddit.com/r/boardgames), all I have to do is use the following url: https://api.pushshift.io/reddit/search/submission?subreddit=boardgames
-
-To help you get started, we have a primer video on how to use the API: https://youtu.be/AcrjEWsMi_E
-
-**NOTE:** Pushshift now limits you to 100 posts per request (no longer the 500 in the screencast).
+- What are the classification opportunities between the subreddits for Service Dogs and Dog Training? 
+- How can those classifications help to predict training opportunities for service and other dogs?
 
 
+### Data Dictionary
 
-**Pro Tip:** You can find a good example executive summary [here](https://www.proposify.biz/blog/executive-summary).
-### Data
+Features used listed below:
+| **Feature**      | **Type** | **Dataset** | **Description**                                           |
+|------------------|----------|-------------|-----------------------------------------------------------|
+| **subreddit**    | _object_ | df          | Subreddit Name (instance of Subreddit)                    |
+| **title**        | _object_ | df          | Title of submission                                       |
+| **selftext**     | _object_ | df          | Selftext of a submission (an empty string if a link post) |
+| **score**        | _int64_  | df          | Total points for a submission                             |
+| **num_comments** | _int64_  | df          | Number of comments on the submission                      |
 
-### Proposed Solution
+
+### Model Findings
+
+- Overall, the Logistic Regression model was the best model to identify Service Dogs vs Dog Training Subreddits.
+- The SVM: C-Support Vector Classification model could also be used.
 
 
-### Evidence
+### Recommendations
 
+__Implications:__ <br>
+- Logistic Regression model was most accurate
+- Did not help predict training opportunities for service or other dogs
 
-### Call to Action
-
----
-
-### Deliverables
-
-- Code must be in at least one clearly commented Jupyter Notebook.
-- A readme/executive summary in markdown.
-- You must submit your slide deck as a PDF.
-
----
-
-#
+__Next Steps:__ <br>
+- Classification opportunities could be to look more into the most common words and compare the differences between each Subreddit
+- Next steps would include specifically looking for training theories and pedagogy related words
